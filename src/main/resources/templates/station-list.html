@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike Station List</title>
+</head>
+
+<body>
+<h1>Bike Station List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Station Id</th>
+        <th>Station Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Capacity</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="station : ${stations}">
+       <td th:text="${station.stationId}"></td>
+        <td> <a th:href="@{/stations/{name}(name=${station.name})}" th:text="${station.name}"> </a></td>
+        <td th:text="${station.address}"></td>
+        <td th:text="${station.city}"></td>
+        <td th:text="${station.totalCapacity}"></td>
+        <td th:text="${station.latitude}"></td>
+        <td th:text="${station.longitude}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
