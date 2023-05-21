@@ -12,4 +12,6 @@ public interface BikeStationService {
     List<BikeStation> getAllBikeStations();
 
     BikeStation findByName(String name);
+
+
 }

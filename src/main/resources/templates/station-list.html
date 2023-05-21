@@ -26,8 +26,8 @@
         <td th:text="${station.address}"></td>
         <td th:text="${station.city}"></td>
         <td th:text="${station.totalCapacity}"></td>
-        <td th:text="${station.latitude}"></td>
-        <td th:text="${station.longitude}"></td>
+        <td th:text="${#numbers.formatDecimal(station.latitude, 0, 4, 'POINT')}"></td>
+        <td th:text="${#numbers.formatDecimal(station.longitude, 0, 4, 'POINT')}"></td>
     </tr>
     </tbody>
 </table>

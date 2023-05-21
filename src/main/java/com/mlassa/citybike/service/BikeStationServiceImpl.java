@@ -29,4 +29,5 @@ public class BikeStationServiceImpl implements BikeStationService{
     public BikeStation findByName(String name) {
         return bikeStationRepository.findByName(name);
     }
+
 }

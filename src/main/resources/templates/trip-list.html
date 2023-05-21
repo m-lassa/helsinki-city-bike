@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike Trip List</title>
+</head>
+<body>
+<h1>Bike Journey List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Start Station</th>
+        <th>End Station</th>
+        <th>Distance (km)</th>
+        <th>Duration (min)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="trip : ${trips}">
+        <td th:text="${trip.departureTime}"></td>
+        <td th:text="${trip.returnTime}"></td>
+        <td th:text="${trip.startStationName}"></td>
+        <td th:text="${trip.endStationName}"></td>
+        <td th:text="${#numbers.formatDecimal(trip.distance, 0, 2, 'POINT')}"></td>
+        <td th:text="${#numbers.formatDecimal(trip.duration, 0, 0, 'POINT')}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
