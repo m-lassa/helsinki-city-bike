@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Bike Trip List</title>
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
 </head>
 <body>
 <h1>Bike Journey List</h1>
@@ -28,6 +30,23 @@
     </tr>
     </tbody>
 </table>
+
+<div>
+    <ul class="page-numbers">
+        <li>
+            <a th:href="@{${requestUri}(page=0, size=${trips.size})}">First</a>
+        </li>
+        <li>
+            <a th:href="@{${requestUri}(page=${trips.number - 1}, size=${trips.size})}">Previous</a>
+        </li>
+        <li>
+            <a th:href="@{${requestUri}(page=${trips.number + 1}, size=${trips.size})}">Next</a>
+        </li>
+        <li>
+            <a th:href="@{${requestUri}(page=${trips.totalPages - 1}, size=${trips.size})}">Last</a>
+        </li>
+    </ul>
+</div>
 
 </body>
 </html>

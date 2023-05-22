@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Bike Station List</title>
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -31,5 +33,23 @@
     </tr>
     </tbody>
 </table>
+
+<div>
+    <ul class="page-numbers">
+        <li>
+            <a th:href="@{${requestUri}(page=0, size=${stations.size})}">First</a>
+        </li>
+        <li>
+            <a th:href="@{${requestUri}(page=${stations.number - 1}, size=${stations.size})}">Previous</a>
+        </li>
+        <li>
+            <a th:href="@{${requestUri}(page=${stations.number + 1}, size=${stations.size})}">Next</a>
+        </li>
+        <li>
+            <a th:href="@{${requestUri}(page=${stations.totalPages - 1}, size=${stations.size})}">Last</a>
+        </li>
+    </ul>
+</div>
+
 </body>
 </html>

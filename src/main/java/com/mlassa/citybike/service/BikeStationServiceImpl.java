@@ -2,6 +2,9 @@ package com.mlassa.citybike.service;
 
 import com.mlassa.citybike.entity.BikeStation;
 import com.mlassa.citybike.repository.BikeStationRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +31,12 @@ public class BikeStationServiceImpl implements BikeStationService{
     @Override
     public BikeStation findByName(String name) {
         return bikeStationRepository.findByName(name);
+    }
+
+    @Override
+    public Page<BikeStation> getPaginatedBikeStations(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return bikeStationRepository.findAll(pageable);
     }
 
 }

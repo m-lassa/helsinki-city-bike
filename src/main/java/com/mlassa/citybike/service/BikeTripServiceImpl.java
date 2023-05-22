@@ -2,6 +2,9 @@ package com.mlassa.citybike.service;
 
 import com.mlassa.citybike.entity.BikeTrip;
 import com.mlassa.citybike.repository.BikeTripRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +28,9 @@ public class BikeTripServiceImpl implements BikeTripService{
         return bikeTripRepository.findAll();
     }
 
-
+    @Override
+    public Page<BikeTrip> getPaginatedBikeTrips(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return bikeTripRepository.findAll(pageable);
+    }
 }

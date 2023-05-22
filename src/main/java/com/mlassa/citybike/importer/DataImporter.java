@@ -65,7 +65,7 @@ public class DataImporter {
 
         System.out.println(bikeStationService.getAllBikeStations().size());
 
-        return bikeStationService.getAllBikeStations().size() == 0;
+        return bikeStationService.getAllBikeStations().size() == 0 && bikeTripService.getAllBikeTrips().size() == 0;
 
     }
 

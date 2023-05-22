@@ -2,13 +2,15 @@ package com.mlassa.citybike.controller;
 
 import com.mlassa.citybike.entity.BikeStation;
 import com.mlassa.citybike.service.BikeStationService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BikeStationController {
@@ -17,13 +19,17 @@ public class BikeStationController {
     private BikeStationService bikeStationService;
 
     @GetMapping("/stations")
-    public String getStations(Model model){
+    public ModelAndView getStations(@RequestParam(defaultValue = "0") int page,
+                                    @RequestParam(defaultValue = "25") int size,
+                                    HttpServletRequest request){
 
-        List<BikeStation> stations = bikeStationService.getAllBikeStations();
+        Page<BikeStation> bikeStations = bikeStationService.getPaginatedBikeStations(page, size);
 
-        model.addAttribute("stations", stations);
+        ModelAndView modelAndView = new ModelAndView("station-list");
+        modelAndView.addObject("stations", bikeStations);
+        modelAndView.addObject("requestUri", request.getRequestURI());
 
-        return "station-list";
+        return modelAndView;
 
     }
 
