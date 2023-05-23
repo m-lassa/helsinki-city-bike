@@ -53,7 +53,7 @@ public class DataImporter {
             }
         }
 
-        if (stationsFirstTimeSetup) {
+        if (tripsFirstTimeSetup) {
             try {
                 importBikeTripData("src/main/resources/data/2021-05.csv");
             } catch (FileNotFoundException ex) {
