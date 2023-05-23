@@ -13,4 +13,8 @@ public interface BikeTripService {
 
     Page<BikeTrip> getPaginatedBikeTrips(int page, int size);
 
+    long countByStartStationName(String stationName);
+
+    long countByEndStationName(String stationName);
+
 }

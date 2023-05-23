@@ -42,30 +42,49 @@ public class DataImporter {
     @PostConstruct
     public void importData() throws IOException, CsvValidationException{
 
-        boolean firstTimeDatabaseSetup = databaseCheck();
+        boolean stationsFirstTimeSetup = stationsDatabaseCheck();
+        boolean tripsFirstTimeSetup = tripsDatabaseCheck();
 
-        if(firstTimeDatabaseSetup){
+        if(stationsFirstTimeSetup){
             try{
                 importBikeStationData("src/main/resources/data/asemat.csv");
             } catch (FileNotFoundException ex){
                 System.out.println("asemat.csv not found in the resources/data folder.");
             }
+        }
 
-            try{
+        if (stationsFirstTimeSetup) {
+            try {
                 importBikeTripData("src/main/resources/data/2021-05.csv");
-            } catch (FileNotFoundException ex){
+            } catch (FileNotFoundException ex) {
                 System.out.println("2021-05.csv not found in the resources/data folder.");
+            }
+
+            try {
+                importBikeTripData("src/main/resources/data/2021-06.csv");
+            } catch (FileNotFoundException ex) {
+                System.out.println("2021-06.csv not found in the resources/data folder.");
+            }
+
+            try {
+                importBikeTripData("src/main/resources/data/2021-07.csv");
+            } catch (FileNotFoundException ex) {
+                System.out.println("2021-07.csv not found in the resources/data folder.");
             }
 
         }
 
     }
 
-    private boolean databaseCheck() {
+    private boolean tripsDatabaseCheck() {
 
-        System.out.println(bikeStationService.getAllBikeStations().size());
+        return bikeTripService.getAllBikeTrips().size() == 0;
 
-        return bikeStationService.getAllBikeStations().size() == 0 && bikeTripService.getAllBikeTrips().size() == 0;
+    }
+
+    private boolean stationsDatabaseCheck() {
+
+        return bikeStationService.getAllBikeStations().size() == 0;
 
     }
 

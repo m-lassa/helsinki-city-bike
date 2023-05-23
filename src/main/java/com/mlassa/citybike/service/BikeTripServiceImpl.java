@@ -33,4 +33,14 @@ public class BikeTripServiceImpl implements BikeTripService{
         Pageable pageable = PageRequest.of(page, size);
         return bikeTripRepository.findAll(pageable);
     }
+
+    @Override
+    public long countByStartStationName(String stationName) {
+        return bikeTripRepository.countByStartStationName(stationName);
+    }
+
+    @Override
+    public long countByEndStationName(String stationName) {
+        return bikeTripRepository.countByEndStationName(stationName);
+    }
 }

@@ -5,6 +5,7 @@ import com.mlassa.citybike.repository.BikeStationRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +35,8 @@ public class BikeStationServiceImpl implements BikeStationService{
     }
 
     @Override
-    public Page<BikeStation> getPaginatedBikeStations(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+    public Page<BikeStation> getPaginatedBikeStations(int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
         return bikeStationRepository.findAll(pageable);
     }
 
