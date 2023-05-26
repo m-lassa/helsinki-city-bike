@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementation class of the BikeStationService interface.
+ * This class provides the actual implementation of the bike station service methods.
+ * It relies on a repository instance to access the data.
+ */
 @Service
 public class BikeStationServiceImpl implements BikeStationService{
 

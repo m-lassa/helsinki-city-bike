@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controller class for handling requests related to bike stations.
+ * It provides the endpoint /stations for retrieving bike trip data,
+ * and /stations/{name} for details on each specific station.
+ */
 @Controller
 public class BikeStationController {
 
@@ -29,6 +34,7 @@ public class BikeStationController {
                                     @RequestParam(defaultValue = "name") String sortBy,
                                     HttpServletRequest request){
 
+        // Create a Page object with the specified page, size and sort order parameters
         Page<BikeStation> bikeStations = bikeStationService.getPaginatedBikeStations(page, size, Sort.by(sortBy).ascending());
 
         ModelAndView modelAndView = new ModelAndView("station-list");
@@ -44,6 +50,7 @@ public class BikeStationController {
 
         BikeStation station = bikeStationService.findByName(name);
 
+        // Queries to count the number of trips starting from this station, and ending at this station, respectively.
         long tripsCountStarting = bikeTripService.countByStartStationName(name);
         long tripsCountEnding = bikeTripService.countByEndStationName(name);
 

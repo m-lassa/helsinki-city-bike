@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a bike trip entity.
+ * A bike trip consists of information about the departure/end time of trips, start station, end station,
+ * distance, and duration of the trip.
+ */
 @Entity
 @Table(name="bike_trip")
 public class BikeTrip {
@@ -110,8 +115,6 @@ public class BikeTrip {
     public void setDuration(Double duration) {
         this.duration = duration;
     }
-
-    // toString()
 
     @Override
     public String toString() {

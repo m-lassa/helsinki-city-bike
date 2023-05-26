@@ -6,6 +6,10 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Controller class for handling unexpected requests leading to exceptions.
+ * It provides the endpoint /error.
+ */
 public class BikeAppErrorController implements ErrorController {
 
     @RequestMapping("/error")

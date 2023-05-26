@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controller class for handling requests related to bike trips.
+ * It provides the endpoint /trips for retrieving bike trip data.
+ */
 @Controller
 public class BikeTripController {
 

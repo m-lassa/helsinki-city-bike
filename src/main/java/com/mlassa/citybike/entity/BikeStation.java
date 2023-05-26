@@ -5,6 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Represents a bike station entity.
+ * A bike station consists of information about the name, address, city, operator,
+ * capacity, latitude, and longitude of the station.
+ */
 @Entity
 @Table(name="bike_station")
 public class BikeStation {
